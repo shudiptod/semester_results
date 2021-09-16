@@ -29,6 +29,7 @@ const showResults = (data, id, semesterId) => {
 }
 
 const loadData = async (id, semesterId) => {
+
     const url = `http://software.diu.edu.bd:8189/result?grecaptcha=&semesterId=${semesterId}&studentId=${id}`;
     const res = await fetch(url);
     console.clear();
