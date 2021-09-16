@@ -1,3 +1,9 @@
+window.onload = function () {
+    $(function () {
+        if (window.location.protocol === "https:")
+            window.location.protocol = "http";
+    });
+}
 console.clear();
 
 const showResults = (data, id, semesterId) => {
