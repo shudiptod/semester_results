@@ -1,9 +1,4 @@
-window.onload = function () {
 
-    if (window.location.protocol === "https:")
-        window.location.protocol = "http";
-    ;
-}
 console.clear();
 
 const showResults = (data, id, semesterId) => {
