@@ -60,5 +60,6 @@ document.getElementById('input-button').addEventListener('click',
         }
         semesterId = parseInt(semesterId);
         loadData(id, semesterId);
+        document.getElementById('id-input').value = '';
     });
 
