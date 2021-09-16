@@ -1,3 +1,5 @@
+console.clear();
+
 const showResults = (data, id, semesterId) => {
     const parent = document.getElementById('row-container');
     data.forEach(element => {
@@ -29,7 +31,9 @@ const showResults = (data, id, semesterId) => {
 const loadData = async (id, semesterId) => {
     const url = `http://software.diu.edu.bd:8189/result?grecaptcha=&semesterId=${semesterId}&studentId=${id}`;
     const res = await fetch(url);
+    console.clear();
     const data = await res.json();
+
     if (data.length == 0) {
         return;
     }
@@ -38,28 +42,26 @@ const loadData = async (id, semesterId) => {
 }
 
 
+const getEvent = () => {
+    const parent = document.getElementById('row-container');
+    parent.innerText = '';
 
-
-
-
-document.getElementById('input-button').addEventListener('click',
-    function () {
-
-        const parent = document.getElementById('row-container');
-        parent.innerText = '';
-
-        const id = document.getElementById('id-input').value;
-        let semesterId = '';
-        for (let i = 0; i < id.length; i++) {
-            if (id[i] == '-') {
-                break;
-            }
-            else {
-                semesterId += id[i];
-            }
+    const id = document.getElementById('id-input').value;
+    let semesterId = '';
+    for (let i = 0; i < id.length; i++) {
+        if (id[i] == '-') {
+            break;
         }
-        semesterId = parseInt(semesterId);
-        loadData(id, semesterId);
-        document.getElementById('id-input').value = '';
-    });
+        else {
+            semesterId += id[i];
+        }
+    }
+    semesterId = parseInt(semesterId);
+    loadData(id, semesterId);
+    document.getElementById('id-input').value = '';
+}
+
+
+
+document.getElementById('input-button').addEventListener('click', getEvent);
 
